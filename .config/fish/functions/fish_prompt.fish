@@ -102,6 +102,4 @@ function fish_prompt --description 'Write out the prompt'
     else
         set  project "Fish"
     end
-
-    wakatime --write --plugin "fish-wakatime/0.0.1" --entity-type app --project "$project" --entity (echo $history[1] | cut -d ' ' -f1) 2>&1 > /dev/null&
 end

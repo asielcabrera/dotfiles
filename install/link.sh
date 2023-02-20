@@ -1,54 +1,37 @@
-TFILES=$HOME/.dotfiles
+#!/bin/bash
+TFILES=$HOME/dotfiles
 
-echo -e "\nCreating symlinks"
-echo "=============================="
-linkables=$( find -H "$DOTFILES" -maxdepth 3 -name '*.symlink' )
-for file in $linkables ; do
-    target="$HOME/.$( basename $file ".symlink" )"
-    if [ -e $target ]; then
-        echo "~${target#$HOME} already exists... Skipping."
-    else
-        echo "Creating symlink for $file"
-        ln -s $file $target
-    fi
-done
 
-echo -e "\n\ninstalling to ~/.config"
-echo "=============================="
+echo "\n\ninstalling to ~/.config"
+echo "======================="
 if [ ! -d $HOME/.config ]; then
     echo "Creating ~/.config"
     mkdir -p $HOME/.config
 fi
-# configs=$( find -path "$DOTFILES/config.symlink" -maxdepth 1 )
-for config in $DOTFILES/config/*; do
-    target=$HOME/.config/$( basename $config )
-    if [ -e $target ]; then
-        echo "~${target#$HOME} already exists... Skipping."
-    else
-        echo "Creating symlink for $config"
-        ln -s $config $target
+
+# Ruta del directorio .config relativo al home del usuario
+CONFIG_DIR=".config"
+
+# Obtiene la ruta completa del directorio .config
+CONFIG_PATH=$TFILES/$CONFIG_DIR
+
+# Función recursiva para crear symlinks
+function symlink_files {
+  # Itera sobre cada archivo o carpeta en el directorio dado
+  for file in "$1"/*; do
+    # Obtiene el nombre del archivo o carpeta
+    filename=$(basename "$file")
+    # Si es un directorio, crea el directorio en el mismo árbol de directorios en el home
+    if [[ -d "$file" ]]; then
+      mkdir -p "$HOME/.config/${file#$CONFIG_PATH}/"
+      # Llama a la función recursivamente para crear symlinks dentro del directorio
+      symlink_files "$file"
+    # Si es un archivo, crea el symlink en la misma ruta relativa dentro del home
+    elif [[ -f "$file" ]]; then
+      ln -sf "$file" "$HOME/.config/${file#$CONFIG_PATH}"
     fi
-done
+  done
+}
 
-# create vim symlinks
-# As I have moved off of vim as my full time editor in favor of neovim,
-# I feel it doesn't make sense to leave my vimrc intact in the dotfiles repo
-# as it is not really being actively maintained. However, I would still
-# like to configure vim, so lets symlink ~/.vimrc and ~/.vim over to their
-# neovim equivalent.
-
-echo "\nCreating vim symlinks"
-echo "=============================="
-
-typeset -A vimfiles=(~/.vim $DOTFILES/config/nvim ~/.vimrc $DOTFILES/config/nvim/init.vim)
-
-for file in "${(@k)vimfiles}"; do
-    # echo "$file -> $vimfiles[$file]"
-    if [ -e ${file} ]; then
-        echo "${file} already exists... skipping"
-    else
-        echo "Creating symlink for $file"
-        ln -s $vimfiles[$file] $file
-    fi
-done
-
+# Llama a la función recursiva con el directorio .config como argumento
+symlink_files "$CONFIG_PATH"
