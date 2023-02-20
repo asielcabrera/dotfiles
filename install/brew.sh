@@ -11,6 +11,10 @@ fi
 
 echo "Installing homebrew packages..."
 
+
+brew tap epk/epk
+brew install --cask font-sf-mono-nerd-font
+
 # Homebrew Packages
 brew install ack
 brew install --cask alacritty

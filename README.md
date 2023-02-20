@@ -1,4 +1,4 @@
-# Josh Medeski's Dotfiles
+# Asiel Cabrera's Dotfiles
 
 ![screenshot](./screenshot.png)
 
