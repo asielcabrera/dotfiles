@@ -9,9 +9,9 @@ else
     echo "Homebrew ya está instalado."
 fi
 
-echo 'export PATH="/usr/local/bin:$PATH"' > ~/.bash_profile
-source ~/.bash_profile
-
+#echo 'export PATH="/usr/local/bin:$PATH"' > ~/.bash_profile
+#source ~/.bash_profile
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 echo "Installing homebrew packages..."
 
