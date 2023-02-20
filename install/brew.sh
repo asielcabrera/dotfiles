@@ -9,6 +9,10 @@ else
     echo "Homebrew ya está instalado."
 fi
 
+echo 'export PATH="/usr/local/bin:$PATH"' > ~/.bash_profile
+source ~/.bash_profile
+
+
 echo "Installing homebrew packages..."
 
 
