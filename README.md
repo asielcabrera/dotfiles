@@ -6,7 +6,9 @@ This is the home of all my dotfiles. These are files that add custom configurati
 
 # How to install
 
-Instructions coming soon.
+```bash
+wget -O - https://raw.githubusercontent.com/asielcabrera/dotfiles/main/quickstart.sh | bash
+```
 
 # Software
 
