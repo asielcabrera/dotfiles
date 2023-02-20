@@ -2,7 +2,7 @@
 
 git clone git@github.com:asielcabrera/dotfiles.git ~/dotfiles
 
-cd ~dotfiles
+cd ~/dotfiles
 
 chmod + install.sh
 
