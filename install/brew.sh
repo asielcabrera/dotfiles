@@ -55,4 +55,3 @@ brew services restart skhd
 brew install koekeishiya/formulae/yabai
 brew services restart yabai
 
-exit 0
