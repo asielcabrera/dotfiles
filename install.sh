@@ -15,7 +15,7 @@ if [ "$(uname)" == "Darwin" ]; then
     source install/brew.sh
     
     echo "Updating OSX settings"
-    # source install/osx.sh
+    source install/osx.sh
 fi
 
 
