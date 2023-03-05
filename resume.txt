@@ -1,0 +1,26 @@
+installar brew
+installar con brew todos los paquetes que uso
+sudo xcodebuild -license accept
+hacer git clone de mis dotfiles 
+los submodules hacerle init # git submodule update --init --recursive
+descargar los paquetes de fisher
+descargar los paquetes de nvim
+descargar los paquetes de tmux
+agregar brew al path
+iniciar los servicios con brew
+configurar algunas funcionalidades de macos por consola 
+git 
+rg
+fd
+lazygit
+tree-sitter
+node
+cc
+brew install gnu-sed
+git-delta
+xcodes
+swiftlint
+swiftformat
+
+
+copiar las ssh y agregarlas al keychain

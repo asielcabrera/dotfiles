@@ -8,6 +8,8 @@
 # The minimal, blazing-fast, and infinitely customizable prompt
 # https://starship.rs
 
+command_timeout = 500
+
 [character]
 success_symbol = "[](white)"
 error_symbol = "[](red)"

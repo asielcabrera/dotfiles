@@ -1,4 +1,4 @@
-# bsp,  stack of float 
+p,  stack of float 
 yabai -m config layout bsp
 
 
@@ -42,4 +42,3 @@ yabai -m rule --add app="^Podcasts$" manage=off
 yabai -m rule --add app="^Notes$" manage=off
 
 yabai -m rule --add app="^Visual Studio Code$" manage=off
-

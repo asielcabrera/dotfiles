@@ -5,4 +5,3 @@ if [ -f b ]; then
   ./b
   exit 0
 fi
-

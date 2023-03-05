@@ -1,0 +1,13 @@
+dotfilesDirectory: "dotfiles"
+
+programs:
+  - name: "zsh"
+    version: "5.8"
+    dotfiles:
+      - ".zshrc"
+  - name: "vim"
+    version: "8.2"
+    dotfiles:
+      - ".vimrc"
+      - ".vim/ftplugin/swift.vim"
+
