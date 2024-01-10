@@ -1,0 +1,12 @@
+keybindings:
+  issues:
+    - key: e
+      command: >
+        tmux display-popup -d {{.RepoPath}} -w 80% -h 90% -E 'nvim -c ":Octo issue edit {{.IssueNumber}}"'
+    - key: i
+      command: >
+        tmux display-popup -d {{.RepoPath}} -w 80% -h 90% -E 'nvim -c ":Octo issue create"'
+  prs:
+    - key: O
+      command: >
+        tmux new-window -c {{.RepoPath}} 'nvim -c ":Octo pr edit {{.PrNumber}}"'

@@ -16,7 +16,7 @@ env:
 window:
   decorations: buttonless
   dynamic_padding: false
-  opacity: 0.80
+  opacity: 0.95
   padding:
     x: 25
     y: 20

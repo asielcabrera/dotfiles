@@ -76,7 +76,7 @@ function fish_prompt --description 'Write out the prompt'
 
     printf '%s ' (fish_vcs_prompt)
 
-    set -l pipestatus_string ( "[" "] " "|" (set_color $fish_color_status) (set_color --bold $fish_color_status) $last_pipestatus)
+    set -l pipestatus_string (__fish_print_pipestatus "[" "] " "|" (set_color $fish_color_status) (set_color --bold $fish_color_status) $last_pipestatus)
     echo -n $pipestatus_string
     set_color normal
 
@@ -103,4 +103,5 @@ function fish_prompt --description 'Write out the prompt'
         set  project "Fish"
     end
 
+    wakatime --write --plugin "fish-wakatime/0.0.1" --entity-type app --project "$project" --entity (echo $history[1] | cut -d ' ' -f1) 2>&1 > /dev/null&
 end

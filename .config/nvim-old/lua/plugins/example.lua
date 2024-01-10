@@ -1,6 +1,6 @@
 -- since this is just an example spec, don't actually load anything here and return an empty spec
 -- stylua: ignore
-if true then return {} end
+-- if true then return {} end
 
 -- every spec file under config.plugins will be loaded automatically by lazy.nvim
 --
@@ -9,16 +9,6 @@ if true then return {} end
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
-  -- add gruvbox
-  { "ellisonleao/gruvbox.nvim" },
-
-  -- Configure LazyVim to load gruvbox
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "gruvbox",
-    },
-  },
 
   -- change trouble config
   {
@@ -93,6 +83,7 @@ return {
       servers = {
         -- pyright will be automatically installed with mason and loaded with lspconfig
         pyright = {},
+        swift = {},
       },
     },
   },
@@ -177,9 +168,19 @@ return {
   -- the opts function can also be used to change the default opts:
   {
     "nvim-lualine/lualine.nvim",
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     event = "VeryLazy",
     opts = function(_, opts)
       table.insert(opts.sections.lualine_x, "😄")
+
+      opts.sections.lualine_x = {
+  { "diff" },
+  { "'󰙨 ' .. vim.g.xcodebuild_test_plan" },
+  { "vim.g.xcodebuild_platform == 'macOS' and '  macOS' or ' ' .. vim.g.xcodebuild_device_name" },
+  { "' ' .. vim.g.xcodebuild_os" },
+  { "encoding" },
+  { "filetype", icon_only = true },
+}
     end,
   },
 
